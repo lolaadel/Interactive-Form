@@ -1,0 +1,440 @@
+/* ==============================
+   1. General Styles
+================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #1e293b;
+  --burgundy: #800020;
+  --burgundy-dark: #600018;
+  --gray: #64748b;
+  --light-gray: #f1f5f9;
+  --white: #ffffff;
+  --border: #cbd5e1;
+  --error: #dc2626;
+  --success: #15803d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--light-gray);
+  color: var(--navy);
+  line-height: 1.6;
+}
+
+/* ==============================
+   2. Page Layout
+================================= */
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ==============================
+   3. Form Card
+================================= */
+
+.form-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 36px;
+  background-color: var(--white);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(30, 41, 59, 0.08);
+  animation: fadeUp 0.6s ease both;
+}
+
+/* ==============================
+   4. Form Header
+================================= */
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  background-color: var(--navy);
+  color: var(--white);
+  border-radius: 12px;
+  font-size: 19px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.form-label {
+  color: var(--burgundy);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.form-header h1 {
+  font-size: 28px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.form-description {
+  color: var(--gray);
+  font-size: 14px;
+}
+
+/* ==============================
+   5. Form Groups
+================================= */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--navy);
+}
+
+.form-group input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 14px;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--burgundy);
+  box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.1);
+}
+
+/* Valid and Invalid Fields */
+
+.form-group input.is-valid {
+  border-color: var(--success);
+}
+
+.form-group input.is-invalid {
+  border-color: var(--error);
+}
+
+.form-group input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* ==============================
+   6. Password Fields
+================================= */
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 65px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  padding: 5px;
+  border: none;
+  background: none;
+  color: var(--burgundy);
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.toggle-password:hover {
+  color: var(--burgundy-dark);
+}
+
+/* ==============================
+   7. Password Strength
+================================= */
+
+.password-strength {
+  margin-top: 10px;
+}
+
+.strength-bars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 7px;
+}
+
+.strength-bars span {
+  height: 4px;
+  flex: 1;
+  border-radius: 5px;
+  background-color: #e2e8f0;
+  transition: background-color 0.25s ease;
+}
+
+#passwordHint {
+  color: var(--gray);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Strength States */
+
+.strength-bars.weak span:nth-child(1) {
+  background-color: var(--error);
+}
+
+.strength-bars.medium span:nth-child(-n + 2) {
+  background-color: #d97706;
+}
+
+.strength-bars.strong span:nth-child(-n + 3) {
+  background-color: #65a30d;
+}
+
+.strength-bars.very-strong span {
+  background-color: var(--success);
+}
+
+/* ==============================
+   8. Error Messages
+================================= */
+
+.field-error {
+  display: block;
+  min-height: 0;
+  margin-top: 5px;
+  color: var(--error);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+/* ==============================
+   9. Terms and Conditions
+================================= */
+
+.terms-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.terms-group input {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  accent-color: var(--burgundy);
+  cursor: pointer;
+}
+
+.terms-group label {
+  color: var(--gray);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.terms-error {
+  margin-bottom: 15px;
+}
+
+/* ==============================
+   10. Submit Button
+================================= */
+
+.submit-btn {
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--burgundy);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--burgundy-dark);
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ==============================
+   11. Form Feedback
+================================= */
+
+.form-feedback {
+  margin-top: 15px;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.form-feedback.success {
+  padding: 12px;
+  background-color: #f0fdf4;
+  color: var(--success);
+  border: 1px solid #bbf7d0;
+}
+
+.form-feedback.error {
+  padding: 12px;
+  background-color: #fef2f2;
+  color: var(--error);
+  border: 1px solid #fecaca;
+}
+
+/* ==============================
+   12. Footer
+================================= */
+
+.form-footer {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.form-footer p {
+  color: var(--gray);
+  font-size: 12px;
+}
+
+.form-footer span {
+  margin: 0 5px;
+  color: var(--burgundy);
+}
+
+.page-note {
+  margin-top: 22px;
+  color: var(--gray);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ==============================
+   13. Keyboard Accessibility
+================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--burgundy);
+  outline-offset: 3px;
+}
+
+/* ==============================
+   14. Responsive Design
+================================= */
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 24px 14px;
+  }
+
+  .form-card {
+    padding: 26px 20px;
+    border-radius: 12px;
+  }
+
+  .form-header h1 {
+    font-size: 24px;
+  }
+
+  .form-description {
+    font-size: 13px;
+  }
+}
+
+/* ==============================
+   15. Animations
+================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
